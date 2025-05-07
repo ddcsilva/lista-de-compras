@@ -1,7 +1,6 @@
 import { criarItemDaLista } from "../scripts/criarItemDaLista.js";
-import verificarListaVazia from "../scripts/verificarListaVazia.js";
 import { configurarData } from "../utils/configurarData.js";
-import { verificarListaVazia } from "../utils/verificarListaVazia.js";
+import { verificarListaVazia, mensagemListaVazia } from "../utils/verificarListaVazia.js";
 import { adicionarComportamentoDeCompra } from "../scripts/adicionarComportamentoDeCompra.js";
 
 const campoItem = document.querySelector("#campo-item");

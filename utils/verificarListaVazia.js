@@ -1,8 +1,7 @@
-export function verificarListaVazia(lista, mensagem) {
-  const quantidadeItens = lista.querySelectorAll("li").length;
-  if (quantidadeItens === 0) {
-    mensagem.classList.remove("invisivel");
-  } else {
-    mensagem.classList.add("invisivel");
-  }
+export const mensagemListaVazia = document.querySelector(".mensagem-lista-vazia");
+
+export function verificarListaVazia(listaDeCompras) {
+  const temItens = listaDeCompras.querySelectorAll("li").length > 0;
+
+  mensagemListaVazia.classList.toggle("invisivel", temItens);
 }
