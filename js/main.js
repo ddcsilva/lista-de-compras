@@ -1,4 +1,5 @@
 import { criarItemDaLista } from "../scripts/criarItemDaLista.js";
+import verificarListaVazia from "../scripts/verificarListaVazia.js";
 import { configurarData } from "../utils/configurarData.js";
 import { verificarListaVazia } from "../utils/verificarListaVazia.js";
 import { adicionarComportamentoDeCompra } from "../scripts/adicionarComportamentoDeCompra.js";
@@ -6,7 +7,6 @@ import { adicionarComportamentoDeCompra } from "../scripts/adicionarComportament
 const campoItem = document.querySelector("#campo-item");
 const listaCompras = document.querySelector("#lista-compras");
 const botaoAdicionar = document.querySelector("#botao-adicionar");
-const mensagemListaVazia = document.querySelector(".mensagem-lista-vazia");
 
 let contador = 0;
 
