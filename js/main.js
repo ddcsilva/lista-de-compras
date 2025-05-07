@@ -1,3 +1,7 @@
+import { criarItemDaLista } from "../scripts/criarItemDaLista.js";
+import { configurarData } from "../utils/configurarData.js";
+import { adicionarComportamentoDeCompra } from "../scripts/adicionarComportamentoDeCompra.js";
+
 const campoItem = document.querySelector("#campo-item");
 const listaCompras = document.querySelector("#lista-compras");
 const botaoAdicionar = document.querySelector("#botao-adicionar");
@@ -15,7 +19,7 @@ botaoAdicionar.addEventListener("click", (evento) => {
     return;
   }
 
-  const novoItem = criarItemDaLista(campoItem.value);
+  const novoItem = criarItemDaLista(campoItem.value, contador++, adicionarComportamentoDeCompra);
   adicionarDataAoItem(novoItem);
   adicionarItemNaLista(novoItem);
   verificarListaVazia();
@@ -27,46 +31,6 @@ function campoItemVazio() {
   return campoItem.value.trim() === "";
 }
 
-function criarItemDaLista(nome) {
-  const li = document.createElement("li");
-
-  const container = document.createElement("div");
-  container.classList.add("container-item-lista");
-
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.id = `item-${contador++}`;
-
-  const paragrafo = document.createElement("p");
-  paragrafo.innerText = nome;
-
-  adicionarComportamentoDeCompra(checkbox, paragrafo);
-
-  container.appendChild(checkbox);
-  container.appendChild(paragrafo);
-  li.appendChild(container);
-
-  return li;
-}
-
-function configurarData() {
-  const agora = new Date();
-  const localizacao = "pt-BR";
-
-  const diaSemana = agora.toLocaleDateString(localizacao, {
-    weekday: "long",
-  });
-
-  const data = agora.toLocaleDateString(localizacao);
-
-  const hora = agora.toLocaleTimeString(localizacao, {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-
-  return `${diaSemana} (${data}) às ${hora}`;
-}
-
 function adicionarDataAoItem(item) {
   const dataCompleta = configurarData();
 
@@ -75,16 +39,6 @@ function adicionarDataAoItem(item) {
   dataItem.innerText = dataCompleta;
 
   item.appendChild(dataItem);
-}
-
-function adicionarComportamentoDeCompra(checkbox, item) {
-  checkbox.addEventListener("click", () => {
-    if (checkbox.checked) {
-      item.classList.add("item-comprado");
-    } else {
-      item.classList.remove("item-comprado");
-    }
-  });
 }
 
 function verificarListaVazia() {
